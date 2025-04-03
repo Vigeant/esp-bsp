@@ -3,14 +3,7 @@
 
 import pytest
 from pytest_embedded import Dut
-from pytest_helpers import bsp_test_image
-import sys
-import os
-
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-
-# Tisk aktuální sys.path pro ověření
-print("Aktuální sys.path:", sys.path)
+from ...pytest_helpers import bsp_test_image
 
 
 @pytest.mark.esp_box_3
