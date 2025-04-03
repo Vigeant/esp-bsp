@@ -70,9 +70,10 @@ def bsp_test_image(board, example, expectation):
 
 
 @pytest.fixture(scope="session", autouse=True)
-def bsp_test(request, item):
+def bsp_test(request):
     param = getattr(request.config, "board", "")
-    test_name = item.name
+    # test_name = item.name
+    print(dir(request))
     yield
-    print(f"Capturing image for: {test_name}/{param}")
-    bsp_test_image(param, test_name, "")
+    print(f"Capturing image for: {param}")
+    bsp_test_image(param, "xxx", "")
