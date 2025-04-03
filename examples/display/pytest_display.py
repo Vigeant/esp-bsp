@@ -3,7 +3,7 @@
 
 import pytest
 from pytest_embedded import Dut
-from ...pytest_helpers import bsp_test_image
+from ..pytest_helpers import bsp_test_image
 
 
 @pytest.mark.esp_box_3
