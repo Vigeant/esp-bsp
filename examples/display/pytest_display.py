@@ -9,6 +9,9 @@ import os
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
+# Tisk aktuální sys.path pro ověření
+print("Aktuální sys.path:", sys.path)
+
 
 @pytest.mark.esp_box_3
 @pytest.mark.esp32_p4_function_ev_board
