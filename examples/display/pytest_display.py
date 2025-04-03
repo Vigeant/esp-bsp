@@ -9,6 +9,9 @@ from pytest_embedded import Dut
 def bsp_capture_image(image_path):
     # Return video from the first webcam on your computer.
     cap = cv2.VideoCapture(0)
+    # Set 4K resolution (3840x2160)
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 3840)
+    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 2160)
     # reads frames from a camera
     # ret checks return at each frame
     ret, frame = cap.read()
