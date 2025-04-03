@@ -4,7 +4,7 @@ name: Build and Run ESP-BSP apps
 # Applications are selected for build based on changes files and dependencies defined in .build-test-rules.yml
 
 on:
-  pull_request_target:
+  pull_request:
     types: [opened, reopened, synchronize, labeled]
   push:
     branches:
