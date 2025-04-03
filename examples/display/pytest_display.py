@@ -1,8 +1,13 @@
-# SPDX-FileCopyrightText: 2023-2024 Espressif Systems (Shanghai) CO LTD
+# SPDX-FileCopyrightText: 2023-2025 Espressif Systems (Shanghai) CO LTD
 # SPDX-License-Identifier: CC0-1.0
 
 import pytest
 from pytest_embedded import Dut
+from pytest_helpers import bsp_test_image
+import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 
 @pytest.mark.esp_box_3
@@ -20,6 +25,8 @@ from pytest_embedded import Dut
 @pytest.mark.m5stack_core_s3
 @pytest.mark.m5stack_core_s3_se
 @pytest.mark.m5_atom_s3
-def test_display_example(dut: Dut) -> None:
+def test_display_example(dut: Dut, request) -> None:
+    board = request.node.callspec.id
     dut.expect_exact('example: Display LVGL animation')
     dut.expect_exact('main_task: Returned from app_main()')
+    bsp_test_image(board, "display", "")
