@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 import pytest
 import cv2
+from pathlib import Path
 
 
 def pytest_generate_tests(metafunc):
@@ -72,7 +73,7 @@ def bsp_test_image(board, example, expectation):
 @pytest.fixture(autouse=True)
 def bsp_test(request):
     board = request.node.callspec.id
-    path = request.node.fspath
+    path = Path(str(request.node.fspath))
     test_name = path.parent.name
     yield
     print(f"Capturing image for: {board}")
