@@ -65,15 +65,15 @@ def bsp_capture_image(image_path):
 
 
 def bsp_test_image(board, example, expectation):
-    image_file = f"snapshot_{example}_{board}.jpg"
+    image_file = f"snapshot_{board}_{example}.jpg"
     bsp_capture_image(image_file)
 
 
 @pytest.fixture(autouse=True)
-def bsp_test(request):
-    board = request.node.callspec.id
-    # test_name = item.name
-    print(dir(request.node.callspec))
+def bsp_test(item):
+    board = item.callspec.id
+    path = item.fspath
+    test_name = path.parent.name
     yield
     print(f"Capturing image for: {board}")
-    bsp_test_image(board, "xxx", "")
+    bsp_test_image(board, test_name, "")
