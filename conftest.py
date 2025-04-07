@@ -69,7 +69,7 @@ def bsp_test_image(board, example, expectation):
     bsp_capture_image(image_file)
 
 
-@pytest.fixture(scope="session", autouse=True)
+@pytest.fixture(autouse=True)
 def bsp_test(request):
     board = request.node.callspec.id
     # test_name = item.name
